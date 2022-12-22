@@ -42,6 +42,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # Add shop app to  installed apps
+    'shop',
 ]
 
 MIDDLEWARE = [
@@ -79,7 +81,7 @@ WSGI_APPLICATION = 'purchasify.wsgi.application'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
 DATABASES = {
-    "default": {
+    'default': {
         # Configure postgres database connection
         'ENGINE': str(os.getenv('DATABASE_ENGINE')),
         'NAME': str(os.getenv('DATABASE_NAME')),
