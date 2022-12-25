@@ -29,7 +29,7 @@ SECRET_KEY = str(os.getenv('SECRET_KEY'))
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'dev.machine']
 
 # Application definition
 
@@ -44,6 +44,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # Add shop app to installed apps
     'shop',
+    # Add cart app to installed apps
+    'cart',
 ]
 
 MIDDLEWARE = [
@@ -143,3 +145,6 @@ AUTH_USER_MODEL = 'account.User'
 LOGIN_REDIRECT_URL = 'dashboard'
 LOGIN_URL = 'login'
 LOGOUT_URL = 'logout'
+
+# Set cart session id to store the cart in the user session
+CART_SESSION_ID = 'cart'
