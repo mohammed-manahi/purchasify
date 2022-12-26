@@ -46,6 +46,8 @@ INSTALLED_APPS = [
     'shop',
     # Add cart app to installed apps
     'cart',
+    # Add order app to installed apps
+    'order',
 ]
 
 MIDDLEWARE = [
