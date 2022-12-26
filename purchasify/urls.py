@@ -26,6 +26,8 @@ urlpatterns = [
     path('', include('shop.urls', namespace='shop')),
     # Include url patterns of the account app
     path('account/', include('account.urls')),
+    # Include url patterns of the order app
+    path('order/', include('order.urls', namespace='order')),
 
 ]
 

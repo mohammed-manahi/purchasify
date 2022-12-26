@@ -8,7 +8,7 @@
 </head>
 <body>
 <div id="header">
-    <a href="/" class="logo">My shop</a>
+    <a href="/" class="logo">Purchasify</a>
 </div>
 <div id="subheader">
     <div class="cart">
@@ -19,7 +19,7 @@
                     {{ total_items }} item{{ total_items|pluralize }},
                     ${{ cart.get_total_price }}
                 </a>
-            {% else %}
+            {% elif not order %}
                 Your cart is empty.
             {% endif %}
         {% endwith %}

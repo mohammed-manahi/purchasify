@@ -15,7 +15,7 @@ class OrderAdmin(admin.ModelAdmin):
     """
     Register order model in admin site
     """
-    list_display = ['id', 'first_name', 'last_name', 'email', 'address', 'city', 'post_code', 'created_at',
+    list_display = ['id', 'first_name', 'last_name', 'email', 'address', 'post_code', 'city', 'created_at',
                     'updated_at']
     list_filter = ['created_at', 'updated_at', 'paid']
     inlines = [OrderItemInline]
