@@ -152,3 +152,6 @@ LOGOUT_URL = 'logout'
 
 # Set cart session id to store the cart in the user session
 CART_SESSION_ID = 'cart'
+
+# Set smtp for mailing in development environment
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'

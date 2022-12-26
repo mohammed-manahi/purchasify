@@ -9,6 +9,8 @@ psycopg2-binary = "*"
 pep8 = "*"
 pillow = "*"
 python-dotenv = "*"
+celery = "*"
+flower = "*"
 
 [dev-packages]
 

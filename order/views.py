@@ -2,7 +2,7 @@ from django.shortcuts import render
 from cart.cart import Cart
 from order.models import Order, OrderItem
 from order.forms import OrderCreateForm
-
+from order.tasks import order_created
 
 def order_create(request):
     """
@@ -19,6 +19,8 @@ def order_create(request):
                 OrderItem.objects.create(order=order, product=item['product'], price=item['price'],
                                          quantity=item['quantity'])
             cart.clear()
+            # Add celery background task for sending email after an order is created
+            order_created.delay(order.id)
             template = 'order/order_created.html'
             context = {'order': order}
             return render(request, template, context)

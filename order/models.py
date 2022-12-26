@@ -8,7 +8,7 @@ class Order(models.Model):
     """
     first_name = models.CharField(max_length=200)
     last_name = models.CharField(max_length=200)
-    email = models.EmailField(unique=True)
+    email = models.EmailField()
     address = models.CharField(max_length=250)
     post_code = models.CharField(max_length=20)
     city = models.CharField(max_length=100)
