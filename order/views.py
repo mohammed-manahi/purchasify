@@ -1,8 +1,10 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django.urls import reverse
 from cart.cart import Cart
 from order.models import Order, OrderItem
 from order.forms import OrderCreateForm
 from order.tasks import order_created
+
 
 def order_create(request):
     """
@@ -21,9 +23,10 @@ def order_create(request):
             cart.clear()
             # Add celery background task for sending email after an order is created
             order_created.delay(order.id)
-            template = 'order/order_created.html'
-            context = {'order': order}
-            return render(request, template, context)
+            # Get the order if rom the session
+            request.session['order_id'] = order.id
+            # redirect for payment
+            return redirect(reverse('payment:process'))
     else:
         form = OrderCreateForm()
         template = 'order/order_create.html'
