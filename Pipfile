@@ -11,6 +11,7 @@ pillow = "*"
 python-dotenv = "*"
 celery = "*"
 flower = "*"
+stripe = "*"
 
 [dev-packages]
 

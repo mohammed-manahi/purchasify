@@ -48,6 +48,8 @@ INSTALLED_APPS = [
     'cart',
     # Add order app to installed apps
     'order',
+    # Add payment app to installed apps
+    'payment',
 ]
 
 MIDDLEWARE = [
@@ -155,3 +157,8 @@ CART_SESSION_ID = 'cart'
 
 # Set smtp for mailing in development environment
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+# Set stripe payment gateway configuration
+STRIPE_PUBLISHABLE_KEY = str(os.getenv('STRIPE_PUBLISHABLE_KEY'))
+STRIPE_SECRET_KEY = str(os.getenv('STRIPE_SECRET_KEY'))
+STRIPE_API_VERSION = str(os.getenv('STRIPE_API_VERSION'))
