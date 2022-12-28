@@ -2,6 +2,9 @@ import csv
 import datetime
 from django.http import HttpResponse
 from django.contrib import admin
+from django.shortcuts import reverse
+from django.utils.safestring import mark_safe
+
 from order.models import Order, OrderItem
 
 
@@ -40,6 +43,16 @@ def export_to_csv(modeladmin, request, queryset):
 export_to_csv.short_description = 'Export to CSV'
 
 
+def order_detail(obj):
+    """
+    Create url for order detail
+    :param obj:
+    :return order detail url:
+    """
+    url = reverse('order:admin_order_detail', args=[obj.id])
+    return mark_safe(f'<a href="{url}">View</a>')
+
+
 class OrderItemInline(admin.TabularInline):
     """
     Include order item in order site admin as an inline display
@@ -54,7 +67,7 @@ class OrderAdmin(admin.ModelAdmin):
     Register order model in admin site
     """
     list_display = ['id', 'first_name', 'last_name', 'email', 'address', 'post_code', 'city', 'created_at',
-                    'updated_at']
+                    'updated_at', order_detail]
     list_filter = ['created_at', 'updated_at', 'paid']
     inlines = [OrderItemInline]
     # Add the custom action to generate csv file here
