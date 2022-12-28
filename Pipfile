@@ -12,6 +12,7 @@ python-dotenv = "*"
 celery = "*"
 flower = "*"
 stripe = "*"
+weasyprint = "*"
 
 [dev-packages]
 

@@ -53,6 +53,20 @@ def order_detail(obj):
     return mark_safe(f'<a href="{url}">View</a>')
 
 
+def order_pdf(obj):
+    """
+    Create pdf invoice for order
+    :param obj:
+    :return order invoice pdf:
+    """
+    url = reverse('order:admin_order_pdf', args=[obj.id])
+    return mark_safe(f'<a href="{url}">PDF</a>')
+
+
+# Define the action name using the short description attribute
+order_pdf.short_description = 'Invoice'
+
+
 class OrderItemInline(admin.TabularInline):
     """
     Include order item in order site admin as an inline display
@@ -67,7 +81,7 @@ class OrderAdmin(admin.ModelAdmin):
     Register order model in admin site
     """
     list_display = ['id', 'first_name', 'last_name', 'email', 'address', 'post_code', 'city', 'created_at',
-                    'updated_at', order_detail]
+                    'updated_at', order_detail, order_pdf]
     list_filter = ['created_at', 'updated_at', 'paid']
     inlines = [OrderItemInline]
     # Add the custom action to generate csv file here
