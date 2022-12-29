@@ -22,15 +22,16 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     # Include url patterns of the cart app
     path('cart/', include('cart.urls', namespace='cart')),
-    # Include url patterns of the shop app
-    path('', include('shop.urls', namespace='shop')),
     # Include url patterns of the account app
     path('account/', include('account.urls')),
     # Include url patterns of the order app
     path('order/', include('order.urls', namespace='order')),
     # Include url patterns of the payment app
     path('payment/', include('payment.urls', namespace='payment')),
-
+    # Include url patterns of the coupon app
+    path('coupon/', include('coupon.urls', namespace='coupon')),
+    # Include url patterns of the shop app
+    path('', include('shop.urls', namespace='shop')),
 ]
 
 if settings.DEBUG:
