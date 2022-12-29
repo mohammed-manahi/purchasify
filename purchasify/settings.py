@@ -165,3 +165,8 @@ STRIPE_PUBLISHABLE_KEY = str(os.getenv('STRIPE_PUBLISHABLE_KEY'))
 STRIPE_SECRET_KEY = str(os.getenv('STRIPE_SECRET_KEY'))
 STRIPE_API_VERSION = str(os.getenv('STRIPE_API_VERSION'))
 STRIPE_WEBHOOK_SECRET = str(os.getenv('STRIPE_WEBHOOK_SECRET'))
+
+# Set redis configuration
+REDIS_HOST = str(os.getenv('REDIS_HOST'))
+REDIS_PORT = str(os.getenv('REDIS_PORT'))
+REDIS_DB = str(os.getenv('REDIS_DB'))
