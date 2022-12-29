@@ -50,6 +50,8 @@ INSTALLED_APPS = [
     'order',
     # Add payment app to installed apps
     'payment',
+    # Add coupon app to installed apps
+    'coupon',
 ]
 
 MIDDLEWARE = [
