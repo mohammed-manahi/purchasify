@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 import os
 from pathlib import Path
 from dotenv import load_dotenv
+from django.utils.translation import gettext_lazy as _
 
 # Use dotenv to secure secret keys in the project
 load_dotenv()
@@ -52,11 +53,15 @@ INSTALLED_APPS = [
     'payment',
     # Add coupon app to installed apps
     'coupon',
+    # Add rosetta third-party library for translation
+    'rosetta',
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    # Add localization middleware and it must be after session since it requires session data
+    'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -122,7 +127,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/4.1/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'en'
 
 TIME_ZONE = 'UTC'
 
@@ -170,3 +175,9 @@ STRIPE_WEBHOOK_SECRET = str(os.getenv('STRIPE_WEBHOOK_SECRET'))
 REDIS_HOST = str(os.getenv('REDIS_HOST'))
 REDIS_PORT = str(os.getenv('REDIS_PORT'))
 REDIS_DB = str(os.getenv('REDIS_DB'))
+
+# Set supported projects languages. Note that this requires gettext package installed which comes by default on linux
+LANGUAGES = [('en', _('English')), ('ar', _('Arabic')), ]
+
+# Set locale directory
+LOCALE_PATHS = [BASE_DIR / 'locale', ]

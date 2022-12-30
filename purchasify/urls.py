@@ -30,6 +30,8 @@ urlpatterns = [
     path('payment/', include('payment.urls', namespace='payment')),
     # Include url patterns of the coupon app
     path('coupon/', include('coupon.urls', namespace='coupon')),
+    # Include url patterns of rosetta third-party library
+    path('rosetta/', include('rosetta.urls')),
     # Include url patterns of the shop app
     path('', include('shop.urls', namespace='shop')),
 ]
