@@ -17,24 +17,30 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
+from django.conf.urls.i18n import i18n_patterns
+from django.utils.translation import gettext_lazy as _
+from payment import webhooks
 
-urlpatterns = [
+urlpatterns = i18n_patterns(
     path('admin/', admin.site.urls),
     # Include url patterns of the cart app
-    path('cart/', include('cart.urls', namespace='cart')),
+    path(_('cart/'), include('cart.urls', namespace='cart')),
     # Include url patterns of the account app
-    path('account/', include('account.urls')),
+    path(_('account/'), include('account.urls')),
     # Include url patterns of the order app
-    path('order/', include('order.urls', namespace='order')),
+    path(_('order/'), include('order.urls', namespace='order')),
     # Include url patterns of the payment app
-    path('payment/', include('payment.urls', namespace='payment')),
+    path(_('payment/'), include('payment.urls', namespace='payment')),
     # Include url patterns of the coupon app
-    path('coupon/', include('coupon.urls', namespace='coupon')),
+    path(_('coupon/'), include('coupon.urls', namespace='coupon')),
     # Include url patterns of rosetta third-party library
     path('rosetta/', include('rosetta.urls')),
     # Include url patterns of the shop app
     path('', include('shop.urls', namespace='shop')),
-]
+)
+
+# Add stripe webhook outside i18n patterns since stripe is a third party service
+urlpatterns += [path('payment/webhook/', webhooks.stripe_webhook, name='stripe-webhook'), ]
 
 if settings.DEBUG:
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

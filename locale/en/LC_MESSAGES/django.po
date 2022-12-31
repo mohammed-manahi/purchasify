@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-12-31 01:09+0300\n"
+"POT-Creation-Date: 2022-12-31 13:48+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -26,13 +26,45 @@ msgstr ""
 msgid "Coupon"
 msgstr ""
 
-#: purchasify/settings.py:178
+#: payment/urls.py:10
+msgid "process/"
+msgstr ""
+
+#: payment/urls.py:11
+msgid "completed/"
+msgstr ""
+
+#: payment/urls.py:12
+msgid "canceled/"
+msgstr ""
+
+#: purchasify/settings.py:180
 msgid "English"
 msgstr ""
 
-#: purchasify/settings.py:178
+#: purchasify/settings.py:180
 msgid "Arabic"
 msgstr "العربية"
+
+#: purchasify/urls.py:27
+msgid "cart/"
+msgstr ""
+
+#: purchasify/urls.py:29
+msgid "account/"
+msgstr ""
+
+#: purchasify/urls.py:31
+msgid "order/"
+msgstr ""
+
+#: purchasify/urls.py:33
+msgid "payment/"
+msgstr ""
+
+#: purchasify/urls.py:35
+msgid "coupon/"
+msgstr ""
 
 #: shop/templates/base.html:7 shop/templates/base.html:12
 msgid "Purchasify"
