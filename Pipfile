@@ -16,6 +16,7 @@ weasyprint = "*"
 redis = "*"
 django-rosetta = "*"
 django-parler = "*"
+django-localflavor = "*"
 
 [dev-packages]
 
