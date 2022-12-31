@@ -55,6 +55,8 @@ INSTALLED_APPS = [
     'coupon',
     # Add rosetta third-party library for translation
     'rosetta',
+    # Add parler third-party library for model translation
+    'parler',
 ]
 
 MIDDLEWARE = [
@@ -181,3 +183,9 @@ LANGUAGES = [('en', _('English')), ('ar', _('Arabic')), ]
 
 # Set locale directory
 LOCALE_PATHS = [BASE_DIR / 'locale', ]
+
+# Set parler configuration
+PARLER_LANGUAGES = {
+    None: ({'code': 'en'}, {'code': 'ar'},),
+    'default': {'fallback': 'en', 'hide_untranslated': False, }
+}

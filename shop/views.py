@@ -15,7 +15,8 @@ def product_list(request, category_slug=None):
     categories = Category.objects.all()
     products = Product.objects.filter(available=True)
     if category_slug:
-        category = get_object_or_404(Category, slug=category_slug)
+        language = request.LANGUAGE_CODE
+        category = get_object_or_404(Category, translations__language_code=language, translations__slug=category_slug)
         # Filter products based on category if it exists in the url slug
         products = Product.objects.filter(category=category)
     template = 'shop/product_list.html'
@@ -31,10 +32,12 @@ def product_detail(request, id, slug):
     :param slug:
     :return: product:
     """
-    product = get_object_or_404(Product, id=id, slug=slug, available=True)
+    language = request.LANGUAGE_CODE
+    product = get_object_or_404(Product, id=id, translations__language_code=language, translations__slug=slug,
+                                available=True)
     cart_product_form = CartAddProductForm()
     r = Recommender()
     recommended_products = r.suggest_products_for([product], 4)
     template = 'shop/product_detail.html'
-    context = {'product': product, 'cart_product_form': cart_product_form,'recommended_products': recommended_products}
+    context = {'product': product, 'cart_product_form': cart_product_form, 'recommended_products': recommended_products}
     return render(request, template, context)
